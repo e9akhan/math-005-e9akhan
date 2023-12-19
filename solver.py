@@ -20,8 +20,7 @@ def solver(p, q):
     number = 0
 
     if p > q:
-        temp, p = p, q
-        q = temp
+        return -1
 
     while True:
         number += q
@@ -33,4 +32,4 @@ def solver(p, q):
 
 
 if __name__ == "__main__":
-    print(solver(1, 20))
+    print(f'solver(1, 10) = {solver(1, 10)}')
