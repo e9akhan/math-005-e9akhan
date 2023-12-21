@@ -3,6 +3,31 @@
     Method(s) :- solver(p, q)
 """
 
+def gcd(x, y):
+    """
+        Find the GCD of x and y.
+
+        Args:-
+            x(int) :- First integer number
+            y(int) :- Second integer number
+
+        Return
+            GCD of two numbers
+    """
+    return y and gcd(y, x%y) or x
+
+def lcm(x, y):
+    """
+        Find the LCM of x and y.
+
+        Args:-
+            x(int) :- First integer number
+            y(int) :- Second integer number
+
+        Return
+            LCM of two numbers
+    """
+    return x*y/gcd(x, y)
 
 def solver(p, q):
     """
@@ -17,18 +42,15 @@ def solver(p, q):
         Smallest number which is divisible by each number
         over the range.
     """
-    number = 0
+    number = 1
 
     if p > q:
         return -1
 
-    while True:
-        number += q
-        for i in range(p, q + 1):
-            if number % i != 0:
-                break
-        else:
-            return number
+    for i in range(p, q):
+        number = lcm(number, i)
+
+    return int(number)
 
 
 if __name__ == "__main__":
